@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- BootStrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Load icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- jQuery Link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+        <!-- moment.js script link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <span><strong>Weather Dashboard</strong></span>
+    </header>
+    <div class="container-fluid h-100">
+        <div class="row">
+            <!-- LEFT SIDE COLUMN -->
+            <div class="col-sm-3 p-3" id="left-side">
+                <div class="row p-3" id="search-bar">
+                    <form>
+                        <input type="text" placeholder="Enter City" id="city-input">
+                        <button id="search-btn"><i class="fa fa-search"></i></button>
+                        <button id="clear-btn">Clear History</button>
+                    </form>
+                </div>
+                <div class="row btn-group" id="search-history">
+                </div>
+            </div>
+            <!-- RIGHT SIDE COLUMN -->
+            <div class="col-sm-9" id="right-side">
+                <!-- TOP SECTION - CURRENT CITY WEATHER -->
+                <div class="row pl-4" id="current-weather">
+                    <span class="city-info" id="city-date-row"></span>
+                    <br>
+                    <span class="city-info" id="temp-row"></span>
+                    <br>
+                    <span class="city-info" id="humidity-row"></span>
+                    <br>
+                    <span class="city-info" id="wind-speed-row"></span>
+                    <br>
+                    <span class="city-info" id="uv-index-row"></span>
+                    <br>
+                </div>
+                <!-- BOTTOM SECTION - 5 DAY FORECAST -->
+                <div class="row p-2" id="five-day">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS link -->
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <!-- JS link -->
+    <script src="logic.js"></script>
+</body>
+
+</html>

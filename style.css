@@ -1,0 +1,79 @@
+header {
+    display: flex;
+    text-align: center;
+    font-size: 60px;
+    background-color: rgb(87, 87, 87);
+    color: white;
+    height: 15vh;
+}
+
+header h1 {
+ 
+    padding-top: 3vh;
+    text-align: center;
+}
+
+.card {
+    width: 15rem;
+    margin: 0 auto;
+}
+
+.row {
+    margin: auto;
+}
+
+.city-info {
+    width: 90rem;
+}
+
+.history-btn {
+    font-size: 30px;
+    display: block;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.btn-group button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    color: black;
+    padding: 10px 24px;
+    width: 80%;
+    display: block;
+}
+
+.btn-group button:not(:last-child) {
+    border-bottom: none;
+}
+
+.btn-group button:hover {
+    background-color: black;
+    color: white;
+}
+
+#left-side {
+    background-color: rgb(200, 200, 200);
+    height: 85vh;
+    width: 10vw;
+    overflow-x: hidden;
+    padding-left: 3vw;
+}
+
+#right-side {
+    width: 80vw;
+}
+
+#current-weather {
+  
+    height: 40vh;
+    width: 80vw;
+}
+
+#five-day {
+
+    height: 45vh;
+    width: 80vw;
+}
+
