@@ -34,21 +34,10 @@ function renderButtons() {
 }
 
 
-searchBtn.on("click", function () {
-    event.preventDefault();
+function displayWeather(location) {
 
-    var $searchInput = $("#city-input").val();
 
-    // append search item to history list
-    searchList.push($searchInput);
- 
-    // save list to local using JSON stringify
-    localStorage.setItem("searchList", JSON.stringify(searchList))
-
-    renderButtons();
-    
-
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + $searchInput + "&appid=cb7a43faa937786927c1d2517fab2d02&units=imperial"
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=cb7a43faa937786927c1d2517fab2d02&units=imperial"
 
 
 
@@ -62,9 +51,9 @@ searchBtn.on("click", function () {
         var newLon = response.coord.lon
 
         map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: newLat, lng: newLon},
+            center: { lat: newLat, lng: newLon },
             zoom: 8
-          });
+        });
 
         // city name and date headline
         var newHeaderH2 = $("<h1>");
@@ -149,16 +138,53 @@ searchBtn.on("click", function () {
             }
         })
     })
+
+
+
+}
+
+
+
+searchBtn.on("click", function () {
+    event.preventDefault();
+
+    var $searchInput = $("#city-input").val();
+
+    // append search item to history list
+    searchList.push($searchInput);
+
+    // save list to local using JSON stringify
+    localStorage.setItem("searchList", JSON.stringify(searchList))
+
+    renderButtons();
+
+    displayWeather($searchInput);
 })
 
 
-historyButtons.on("click", function(){
+// history button clicked
 
-    console.log($(this));
+$(document).on("click", ".history-btn", function () {
+
+    var city = $(this).text();
+    displayWeather(city);
 
 })
 
-clearBtn.on("click", function (){
+
+
+
+
+// historyButtons.on("click", function(){
+
+//     console.log($(this).text());
+
+// })
+
+
+
+
+clearBtn.on("click", function () {
 
     localStorage.clear();
     renderButtons();
