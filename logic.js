@@ -57,6 +57,14 @@ searchBtn.on("click", function () {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
+        var newLat = response.coord.lat;
+        var newLon = response.coord.lon
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: newLat, lng: newLon},
+            zoom: 8
+          });
 
         // city name and date headline
         var newHeaderH2 = $("<h1>");
@@ -97,7 +105,7 @@ searchBtn.on("click", function () {
             method: "GET"
         }).then(function (response) {
             fiveDay.empty();
-            for (i = 2; i < response.list.length; i += 8) {
+            for (i = 4; i < response.list.length; i += 8) {
                 var dateMs = response.list[i].dt_txt;
                 var desc = response.list[i].weather[0].description;
                 var temp = Math.round(response.list[i].main.temp);
@@ -146,7 +154,7 @@ searchBtn.on("click", function () {
 
 historyButtons.on("click", function(){
 
-    console.log($(this).val());
+    console.log($(this));
 
 })
 

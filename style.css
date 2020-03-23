@@ -1,3 +1,10 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
 header {
     display: flex;
     text-align: center;
@@ -12,6 +19,7 @@ header h1 {
     padding-top: 3vh;
     text-align: center;
 }
+
 
 .card {
     width: 15rem;
@@ -32,6 +40,10 @@ header h1 {
     margin: 0 auto;
     background-color: white;
     border: 1px solid black;
+}
+
+.btn-group {
+    display: block;
 }
 
 .btn-group button {
@@ -56,8 +68,8 @@ header h1 {
 #left-side {
     background-color: rgb(200, 200, 200);
     height: 85vh;
-    width: 10vw;
-    overflow-x: hidden;
+    width: auto;
+    overflow: scroll;
     padding-left: 3vw;
 }
 
@@ -68,12 +80,18 @@ header h1 {
 #current-weather {
   
     height: 40vh;
-    width: 80vw;
+ 
 }
 
 #five-day {
 
     height: 45vh;
-    width: 80vw;
+ 
+}
+
+#map {
+    /* background-color: lightblue; */
+    height: 100%;
+    width: 100%;
 }
 

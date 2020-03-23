@@ -6,29 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
 
-    <!-- css link -->
-    <link rel="stylesheet" href="style.css">
+
 
     <!-- BootStrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+
+
     <!-- Load icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
+    <!-- css link -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Google Maps Link -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1kOjhwGOT2QlF3WgXmWZQM2kZSUehTdI&callback=initMap">
+        </script>
+
     <!-- jQuery Link -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-        <!-- moment.js script link -->
+    <!-- moment.js script link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+
+
 </head>
 
 <body>
     <header>
         <span><strong>Weather Dashboard</strong></span>
     </header>
-    <div class="container-fluid h-100">
+    <div class="container-fluid h-85">
         <div class="row">
             <!-- LEFT SIDE COLUMN -->
             <div class="col-sm-3 p-3" id="left-side">
@@ -46,16 +59,21 @@
             <div class="col-sm-9" id="right-side">
                 <!-- TOP SECTION - CURRENT CITY WEATHER -->
                 <div class="row pl-4" id="current-weather">
-                    <span class="city-info" id="city-date-row"></span>
-                    <br>
-                    <span class="city-info" id="temp-row"></span>
-                    <br>
-                    <span class="city-info" id="humidity-row"></span>
-                    <br>
-                    <span class="city-info" id="wind-speed-row"></span>
-                    <br>
-                    <span class="city-info" id="uv-index-row"></span>
-                    <br>
+                    <div class="col">
+                        <span class="city-info" id="city-date-row"></span>
+                        <br>
+                        <span class="city-info" id="temp-row"></span>
+                        <br>
+                        <span class="city-info" id="humidity-row"></span>
+                        <br>
+                        <span class="city-info" id="wind-speed-row"></span>
+                        <br>
+                        <span class="city-info" id="uv-index-row"></span>
+                        <br>
+                    </div>
+                    <div class="col" id="map">
+
+                    </div>
                 </div>
                 <!-- BOTTOM SECTION - 5 DAY FORECAST -->
                 <div class="row p-2" id="five-day">
