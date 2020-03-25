@@ -64,7 +64,7 @@ function displayWeather(location) {
 
         // city name and date headline
         var newHeaderH2 = $("<h1>");
-        newHeaderH2.html(response.name + " <img src=\"http://openweathermap.org/img/w/" + response.weather[0].icon + ".png\"><br><h5>" + today + "</h5>");
+        newHeaderH2.html(response.name + " <img src=\"https://openweathermap.org/img/w/" + response.weather[0].icon + ".png\"><br><h5>" + today + "</h5>");
         cityDateRow.empty();
         cityDateRow.append(newHeaderH2);
 
@@ -120,7 +120,7 @@ function displayWeather(location) {
 
                 //update li text
                 newDateLi.text(dateMs.slice(0, 10));
-                newDescLi.html("<img src=\"http://openweathermap.org/img/w/" + iconID + ".png\">" + desc);
+                newDescLi.html("<img src=\"https://openweathermap.org/img/w/" + iconID + ".png\">" + desc);
                 newTempLi.html("Temp: " + temp + "&deg;");
                 newHumidityLi.text("Humidity: " + humidity + "%");
 
@@ -139,7 +139,7 @@ function displayWeather(location) {
         })
 
         $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/uvi?appid=cb7a43faa937786927c1d2517fab2d02&lat=" + newLat + "&lon=" + newLon,
+            url: "https://api.openweathermap.org/data/2.5/uvi?appid=cb7a43faa937786927c1d2517fab2d02&lat=" + newLat + "&lon=" + newLon,
             method: "GET"
         }).then(function(response) {
             var uvIndex = response.value;
