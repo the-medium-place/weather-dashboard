@@ -19,21 +19,26 @@ var today = moment().format("dddd, MMMM Do YYYY")
 
 renderButtons();
 
+// render weather for last searched item on page load
+if(searchList[0]){
+    displayWeather(searchList[searchList.length-1]);
+};
 
+// display search history buttons
 function renderButtons() {
     searchHistoryDiv.empty();
     for (var i = 0; i < searchList.length; i++) {
 
         var newBtn = $("<button>");
         newBtn.attr("class", "history-btn");
-        newBtn.html(searchList[i] + "<br>");
-        searchHistoryDiv.append(newBtn);
+        newBtn.html(searchList[i]);
+        searchHistoryDiv.prepend(newBtn);
 
 
     }
 }
 
-
+// populate full right side of page
 function displayWeather(location) {
 
 
@@ -46,10 +51,12 @@ function displayWeather(location) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
-        console.log(response);
+      
         var newLat = response.coord.lat;
-        var newLon = response.coord.lon
+        var newLon = response.coord.lon;
+     
 
+        //fill map square
         map = new google.maps.Map(document.getElementById('map'), {
             center: { lat: newLat, lng: newLon },
             zoom: 8
@@ -80,28 +87,27 @@ function displayWeather(location) {
         windSpeedRow.empty();
         windSpeedRow.append(newWindH4)
 
-        var newUVH4 = $("<h3>");
+        
 
 
 
-        console.log(response);
-        console.log(response.weather[0].description)
+      
         var query2URL = "https://api.openweathermap.org/data/2.5/forecast?appid=cb7a43faa937786927c1d2517fab2d02&units=imperial&id=" + response.id;
-        console.log(query2URL);
+        
 
         $.ajax({
             url: query2URL,
             method: "GET"
         }).then(function (response) {
             fiveDay.empty();
-            for (i = 4; i < response.list.length; i += 8) {
+            for (i = 0; i < response.list.length; i += 8) {
                 var dateMs = response.list[i].dt_txt;
                 var desc = response.list[i].weather[0].description;
                 var temp = Math.round(response.list[i].main.temp);
                 var humidity = response.list[i].main.humidity;
                 var iconID = response.list[i].weather[0].icon;
 
-                console.log(response.list[i]);
+              
                 //create bootstrap card
                 var newCard = $("<div>");
                 newCard.attr("class", "card");
@@ -110,7 +116,7 @@ function displayWeather(location) {
                 var newUl = $("<ul>");
                 newUl.attr("class", "list-group list-group-flush");
                 var newDateLi = $("<li>");
-                newDateLi.attr("class", "list-group-item");
+                newDateLi.attr("class", "list-group-item date-line");
                 var newDescLi = $("<li>");
                 newDescLi.attr("class", "list-group-item");
                 var newTempLi = $("<li>");
@@ -119,7 +125,7 @@ function displayWeather(location) {
                 newHumidityLi.attr("class", "list-group-item");
 
                 //update li text
-                newDateLi.text(dateMs);
+                newDateLi.text(dateMs.slice(0, 10));
                 newDescLi.html("<img src=\"http://openweathermap.org/img/w/" + iconID + ".png\">" + desc);
                 newTempLi.html("Temp: " + temp + "&deg;");
                 newHumidityLi.text("Humidity: " + humidity + "%");
@@ -137,6 +143,47 @@ function displayWeather(location) {
                 fiveDay.append(newCard);
             }
         })
+
+        $.ajax({
+            url: "http://api.openweathermap.org/data/2.5/uvi?appid=cb7a43faa937786927c1d2517fab2d02&lat=" + newLat + "&lon=" + newLon,
+            method: "GET"
+        }).then(function(response) {
+            var uvIndex = response.value;
+            var newUVH4 = $("<h4>");
+
+            //set uv line
+            newUVH4.text("UV Index: ");
+
+            //set index number in span
+            var newSpan = $("<span>");
+            newSpan.html(uvIndex);
+            
+            //color span background
+            if(uvIndex<3){
+                newSpan.attr("style", "background-color: green;")
+            } else if (uvIndex<6){
+                newSpan.attr("style", "background-color: yellow;")
+            } else if (uvIndex<8){
+                newSpan.attr("style", "background-color: orange;")
+            }else if (uvIndex<11){
+                newSpan.attr("style", "background-color: red; color: white;")
+            } else {
+                newSpan.attr("style", "background-color: maroon; color: white;")
+            }
+
+            //add span to uv line
+            newUVH4.append(newSpan);
+
+            // update uv index line
+            uvIndexRow.empty();
+            uvIndexRow.append(newUVH4);
+
+
+        });
+
+
+
+
     })
 
 
@@ -144,7 +191,7 @@ function displayWeather(location) {
 }
 
 
-
+// search button clicked
 searchBtn.on("click", function () {
     event.preventDefault();
 
@@ -156,30 +203,24 @@ searchBtn.on("click", function () {
     // save list to local using JSON stringify
     localStorage.setItem("searchList", JSON.stringify(searchList))
 
+    // render updated list
     renderButtons();
 
+    // render weather page
     displayWeather($searchInput);
+
+    // clear the search field
+    $("#city-input").empty();
 })
 
 
 // history button clicked
-
 $(document).on("click", ".history-btn", function () {
 
     var city = $(this).text();
     displayWeather(city);
 
 })
-
-
-
-
-
-// historyButtons.on("click", function(){
-
-//     console.log($(this).text());
-
-// })
 
 
 

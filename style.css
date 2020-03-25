@@ -2,28 +2,34 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-  }
-
+}
 
 header {
-    display: flex;
-    text-align: center;
-    font-size: 60px;
+    display: block;
     background-color: rgb(87, 87, 87);
     color: white;
     height: 15vh;
 }
 
 header h1 {
- 
+    margin: 0 auto;
     padding-top: 3vh;
     text-align: center;
+    font-size: 3rem;
 }
 
-
 .card {
+    background-color: blue;
+    
+    /* height: 80%; */
     width: 15rem;
-    margin: 0 auto;
+    margin: auto auto;
+    font-weight: bold;
+    color: white;
+}
+
+.card li {
+    background-color: blue;
 }
 
 .row {
@@ -65,6 +71,15 @@ header h1 {
     color: white;
 }
 
+.drop-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.date-line {
+    font-size: 30px;
+}
+
 #left-side {
     background-color: rgb(200, 200, 200);
     height: 85vh;
@@ -78,20 +93,14 @@ header h1 {
 }
 
 #current-weather {
-  
     height: 40vh;
- 
 }
 
 #five-day {
-
     height: 45vh;
- 
 }
 
 #map {
-    /* background-color: lightblue; */
     height: 100%;
     width: 100%;
 }
-
