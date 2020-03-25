@@ -87,14 +87,9 @@ function displayWeather(location) {
         windSpeedRow.empty();
         windSpeedRow.append(newWindH4)
 
-        
-
-
-
-      
+              
         var query2URL = "https://api.openweathermap.org/data/2.5/forecast?appid=cb7a43faa937786927c1d2517fab2d02&units=imperial&id=" + response.id;
         
-
         $.ajax({
             url: query2URL,
             method: "GET"
@@ -106,8 +101,7 @@ function displayWeather(location) {
                 var temp = Math.round(response.list[i].main.temp);
                 var humidity = response.list[i].main.humidity;
                 var iconID = response.list[i].weather[0].icon;
-
-              
+  
                 //create bootstrap card
                 var newCard = $("<div>");
                 newCard.attr("class", "card");
@@ -177,17 +171,8 @@ function displayWeather(location) {
             // update uv index line
             uvIndexRow.empty();
             uvIndexRow.append(newUVH4);
-
-
         });
-
-
-
-
     })
-
-
-
 }
 
 
@@ -222,9 +207,7 @@ $(document).on("click", ".history-btn", function () {
 
 })
 
-
-
-
+// clear button clicked
 clearBtn.on("click", function () {
 
     localStorage.clear();

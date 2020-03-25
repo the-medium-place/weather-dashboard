@@ -18,10 +18,15 @@ header h1 {
     font-size: 3rem;
 }
 
+
+
+
+
+
 .card {
     background-color: blue;
     
-    /* height: 80%; */
+ 
     width: 15rem;
     margin: auto auto;
     font-weight: bold;
@@ -80,6 +85,11 @@ header h1 {
     font-size: 30px;
 }
 
+
+
+
+
+
 #left-side {
     background-color: rgb(200, 200, 200);
     height: 85vh;
@@ -93,11 +103,11 @@ header h1 {
 }
 
 #current-weather {
-    height: 40vh;
+    height: 45vh;
 }
 
 #five-day {
-    height: 45vh;
+    height: 40vh;
 }
 
 #map {
